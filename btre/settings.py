@@ -96,9 +96,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'btre_backup',
-        'USER': 'postgres',
+        'USER': 'avmadmin',
         'PASSWORD': DB_PASSWORD,
-        'PORT': '5432',
+        'PORT': '21498',
         'HOST': DB_HOST,
     }
 }
