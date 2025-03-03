@@ -33,7 +33,7 @@ SECRET_KEY = SECRET_KEY2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['btrealestate-production-d44c.up.railway.app']
 # Helloail
 
 # Application definition
