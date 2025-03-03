@@ -34,7 +34,7 @@ SECRET_KEY = SECRET_KEY2
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# Hello
+# Helloail
 
 # Application definition
 
@@ -97,7 +97,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
-        'USER': 'avmadmin',
+        'USER': 'avnadmin',
         'PASSWORD': DB_PASSWORD,
         'PORT': '21498',
         'HOST': DB_HOST,
