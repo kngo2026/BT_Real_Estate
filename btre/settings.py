@@ -12,35 +12,36 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-from dotenv import load_dotenv
-load_dotenv()
+
+from supabase import create_client
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+if not SUPABASE_URL:
+    raise ValueError("SUPABASE_URL is not set in environment variables")
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+# Correct MEDIA_URL format
+MEDIA_URL = f"{SUPABASE_URL}/storage/v1/object/public/media/"
 DB_PASSWORD = os.getenv('DB_PASSWORD')
 DB_HOST = os.getenv('DB_HOST')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-SECRET_KEY2 = os.getenv('SECRET_KEY2')
 # Ensure these variables are defined
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY2
+SECRET_KEY = 'django-insecure-r2&le&$_93gv-c*60rxdg)ktw6lq5i==%tilq0m9^$tzt+_5e*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['btrealestate-production-d44c.up.railway.app']
-# CSRF FOR RAILWAY.APP
-CSRF_TRUSTED_ORIGINS = [
-    'https://btrealestate-production-d44c.up.railway.app'
-]
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-# Helloail
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -67,7 +68,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'btre.urls'
@@ -103,10 +103,10 @@ WSGI_APPLICATION = 'btre.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'defaultdb',
-        'USER': 'avnadmin',
+        'NAME': 'btre_backup',
+        'USER': 'postgres',
         'PASSWORD': DB_PASSWORD,
-        'PORT': '21498',
+        'PORT': '5432',
         'HOST': DB_HOST,
     }
 }
@@ -151,10 +151,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'btre/static')
 ]
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = 'media/'
+# MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
