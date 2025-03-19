@@ -42,7 +42,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['btrealestate-production-8a0f.up.railway.app','localhost', '127.0.0.1', 'btrealestate-production-d44c.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = ['btrealestate-production-8a0f.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://btrealestate-production-8a0f.up.railway.app'
+]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
