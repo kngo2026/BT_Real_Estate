@@ -40,10 +40,10 @@ SECRET_KEY = 'django-insecure-r2&le&$_93gv-c*60rxdg)ktw6lq5i==%tilq0m9^$tzt+_5e*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['btrealestate-production-8a0f.up.railway.app','localhost', '127.0.0.1', 'btrealestate-production-d44c.up.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'btrealestate-production-d44c.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://btrealestate-production-8a0f.up.railway.app'
+    'https://btrealestate-production-d44c.up.railway.app'
 ]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
